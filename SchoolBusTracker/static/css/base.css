@@ -4,11 +4,25 @@
 	--white: #888787;
 	--accent: #e56237;
 }
+.gotoregister
+{
+	margin-left: 800px;
+}
+@media (max-width:1028px)
+{
+	.gotoregister
 
+	{
+		text-align: center;
+
+	}
+}
 body {
 	background-color: var(--primary);
 	color: #fff;
 }
+
+
 
 a {
 	color: #fff;
