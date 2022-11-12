@@ -18,8 +18,12 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.warning(request, 'You are logged in')
-            return redirect('/')
+            user_type = User.objects.filter(username=username).values_list('account_type',flat=True)
+            print("user type:",user_type[0])
+            if user_type[0] == "Driver":
+                return render(request,'accounts/driver-dashboard.html')
+            else:
+                return render(request,'accounts/parent-dashboard.html')
 
         else:
             messages.warning(request, 'Invalid credentials')
