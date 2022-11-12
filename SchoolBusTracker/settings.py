@@ -27,7 +27,7 @@ SECRET_KEY = '0%7k#^0gz=b!1c(7g!ey#+9+yio3aego7b%!tz$#n!9$=zkk)b'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = ['https://easybus.azurewebsites.net']
 
 # Application definition
 
