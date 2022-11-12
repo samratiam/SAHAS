@@ -4,6 +4,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
+from schools.models import School
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -37,6 +38,8 @@ def register(request):
         account_type = request.POST['account_type']
         phone = request.POST['phone']
         location = request.POST['location']
+        bus_route = request.POST['bus_route']
+        school_name = request.POST['school_name']
 
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
@@ -53,6 +56,8 @@ def register(request):
                         phone=phone,location=location
                     )
                     user.save()
+                    school = School(school_name=school_name,bus_route=bus_route,user=user)
+                    school.save()
                     messages.success(
                         request, 'Account registered successfully')
                     return redirect('login')

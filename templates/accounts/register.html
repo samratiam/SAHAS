@@ -83,7 +83,7 @@
 				/>
 			</div>
 			<div class="form-group">
-				<h3>Are you a Parent Or School ?
+				<h3>Are you a Parent Or Driver ?
 			</div>
 			<input
 					name="account_type"
@@ -93,10 +93,26 @@
 				<input
 					name="account_type"
 					type="radio"
-					value="School"
+					value="Driver"
 				/>
-				School </br>
-
+				Driver </br>
+				<div class="form-group">
+					<input
+						name="school_name"
+						class="form-control"
+						placeholder="School Name"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<input
+						name="bus_route"
+						class="form-control"
+						placeholder="Bus Route"
+						required
+					/>
+				</div>
+			
 			<button type="submit" class="btn btn-accent form-btn w-100 mt-3 mb-3">
 				Signup
 			</button>
