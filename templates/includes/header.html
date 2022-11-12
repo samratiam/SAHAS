@@ -12,6 +12,10 @@
 			<div class="header-buttons col-md-6 d-flex justify-content-end">
 				{% if user.is_authenticated %} {%if user.is_superuser%}
 				<a class="btn btn-accent mr-3" href="/admin/">Dashboard</a>
+				{%elif user.account_type == 'Driver'%}
+				<a class="btn btn-accent mr-3" href="/driver/dashboard/">Dashboard</a>
+				{%elif user.account_type == 'Parent'%}
+				<a class="btn btn-accent mr-3" href="/parent/dashboard/">Dashboard</a>
 				{%endif%}
 				<a class="btn btn-accent" href="{% url 'logout' %}">Logout</a>
 				{% else %}

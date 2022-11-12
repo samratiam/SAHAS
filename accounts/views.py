@@ -71,6 +71,11 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
+def parent(request):
+    return  render(request, 'accounts/parent-dashboard.html')
+
+def driver(request):
+    return  render(request, 'accounts/driver-dashboard.html')
 
 
 
