@@ -1,0 +1,4 @@
+{
+	"appService.defaultWebAppToDeploy": "/subscriptions/2b809c70-2b50-451a-8c0e-e547eee90fb1/AppServices/subscriptions/2b809c70-2b50-451a-8c0e-e547eee90fb1/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/easybus",
+	"appService.deploySubpath": "."
+}
