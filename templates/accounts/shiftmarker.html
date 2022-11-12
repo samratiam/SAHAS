@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>enterdata</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""
+    ></script>
+    <style>
+      #map {
+        height: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="latitude" placeholder="Enter latitude" />
+    </div>
+    <div>
+      <input id="longitude" placeholder="Enter  longitude" />
+    </div>
+    <button id="submit" value="send">Submit</button>
+
+    <h1>Map user location</h1>
+
+    <div id="map"></div>
+  </body>
+  <script>
+    var map = L.map("map");
+    map.setView([51.505, -0.09], 15);
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    let marker, circle, zoomed;
+
+    const btn = document.querySelector("#submit");
+    const longEl = document.querySelector("#longitude");
+    const latEl = document.querySelector("#latitude");
+
+    btn.addEventListener("click", () => {
+      const latitude = latEl.value;
+      const longitude = longEl.value;
+      changeMarkerPosition(latitude, longitude);
+    });
+
+    function changeMarkerPosition(latitude, longitude) {
+      if (!marker) {
+        marker = L.marker([latitude, longitude]).addTo(map);
+        circle = L.circle([latitude, longitude], { radius: 30 }).addTo(map);
+      }
+
+      console.log(marker);
+
+      marker.setLatLng([latitude, longitude]).update();
+      map.setView([latitude, longitude]);
+    }
+  </script>
+</html>
