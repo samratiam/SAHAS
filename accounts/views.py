@@ -18,7 +18,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.warning(request, 'You are logged in')
-            return redirect('home')
+            return redirect('/')
 
         else:
             messages.warning(request, 'Invalid credentials')
@@ -29,12 +29,14 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        firstname = request.POST['firstname']
-        lastname = request.POST['lastname']
+        fullname = request.POST['fullname']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
+        account_type = request.POST['account_type']
+        phone = request.POST['phone']
+        location = request.POST['location']
 
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
@@ -46,8 +48,9 @@ def register(request):
                     return redirect('register')
                 else:
                     user = User.objects.create_user(
-                        first_name=firstname, last_name=lastname, username=username,
-                        email=email, password=password
+                        fullname=fullname, username=username,
+                        email=email, password=password, account_type=account_type,
+                        phone=phone,location=location
                     )
                     user.save()
                     messages.success(
@@ -61,7 +64,7 @@ def register(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('home')
+    return redirect('/')
 
 
 
